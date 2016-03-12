@@ -4,6 +4,17 @@ WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 300
 BACKGROUND_COLOR = (24, 81, 186)
 
+#PISTOLS
+USP_S = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
+P250  = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
+#GRENADES
+HE_GRENADE  = pygame.image.load(os.getcwd() + '\pictures\\nades\he.png')
+DECOY	 	= pygame.image.load(os.getcwd() + '\pictures\\nades\decoy.png')
+MOLOTOV		= pygame.image.load(os.getcwd() + '\pictures\\nades\molotov.png')
+FLASHBANG	= pygame.image.load(os.getcwd() + '\pictures\\nades\\flash.png')
+SMOKE  		= pygame.image.load(os.getcwd() + '\pictures\\nades\smoke.png')
+
+
 
 def main():
 
@@ -38,35 +49,63 @@ def main():
 	nades_frame = pygame.Rect(8, 208, 144, 84)
 	equip_frame = pygame.Rect(198, 208, 144, 84)
 
-
-
-	
-	image = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
-	screen.blit(image, sec_rect)
-
-
 	roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=(os.getcwd() + '\pictures\die.png'))
 
 	quit = False
+
+	prim_img  = None
+	sec_img   = []
+	nades_img = []
+	equip_img = []
+
 	while not quit:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				quit = True
+
+			pygame.draw.rect(screen, (200, 200, 200), prim_rect)
+			pygame.draw.rect(screen, (200, 200, 200), sec_rect)
+			pygame.draw.rect(screen, (200, 200, 200), nades_rect)
+			pygame.draw.rect(screen, (200, 200, 200), equip_rect)
+
+			pygame.draw.rect(screen, (100, 100, 100), prim_frame, 2)
+			pygame.draw.rect(screen, (100, 100, 100), sec_frame, 2)
+			pygame.draw.rect(screen, (100, 100, 100), nades_frame, 2)
+			pygame.draw.rect(screen, (100, 100, 100), equip_frame, 2)
+
+
 			if 'click' in roll_button.handleEvent(event):
-				print dice.roll()
+				prim_img  = None
+				sec_img   = None
+				nades_img = []
+				equip_img = []
+				roll = dice.roll()
+				print roll
 
-		pygame.draw.rect(screen, (200, 200, 200), prim_rect)
-		pygame.draw.rect(screen, (200, 200, 200), sec_rect)
-		pygame.draw.rect(screen, (200, 200, 200), nades_rect)
-		pygame.draw.rect(screen, (200, 200, 200), equip_rect)
+				if roll[0] in [2, 3, 4]:
+					prim_img = roll[1]
+				elif roll[0] == 1:
+					sec_img = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
 
-		pygame.draw.rect(screen, (100, 100, 100), prim_frame, 2)
-		pygame.draw.rect(screen, (100, 100, 100), sec_frame, 2)
-		pygame.draw.rect(screen, (100, 100, 100), nades_frame, 2)
-		pygame.draw.rect(screen, (100, 100, 100), equip_frame, 2)
+				elif roll[0] == 6:
+					nades_img.append(roll[1])
+				elif roll[0] == 5:
+					equip_img.append(roll[1])
+				
+
+
 
 		roll_button.draw(screen)
-		screen.blit(image, sec_rect)
+
+		#if prim_img is not None:
+			#screen.blit(prim_img, prim_rect)
+		if sec_img is not None:
+			screen.blit(sec_img, sec_rect)
+		#for nade in nades_img:
+			#screen.blit(nade, pos)
+		#for equip in equip_img:
+			#screen.blit(equip, pos)
+
 
 		pygame.display.flip()
 		pygame.display.update()
@@ -75,10 +114,6 @@ def main():
 
 
 		clock.tick(60)
-
-
-	
-
 
 
 
