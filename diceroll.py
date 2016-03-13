@@ -4,6 +4,9 @@ WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 300
 BACKGROUND_COLOR = (24, 81, 186)
 
+#MISC
+DICE  = os.getcwd() + '\pictures\die.png'
+DUMMY = pygame.image.load(os.getcwd() + '\pictures\dummy.png')
 #PISTOLS
 USP_S = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
 P250  = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
@@ -59,13 +62,14 @@ def main():
 	nades_frame = pygame.Rect(8, 208, 144, 84)
 	equip_frame = pygame.Rect(198, 208, 144, 84)
 
-	roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=(os.getcwd() + '\pictures\die.png'))
+	roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DICE)
 
 	quit = False
 
-	pistol_img = [USP_S, P250, USP_S, P250, USP_S, P250]
-	heavy_img  = [NOVA, NEGEV, NOVA, NEGEV, NOVA, NEGEV]
-	smg_img    = [MAC10, MAC10, MAC10, MAC10, MAC10, MAC10]
+	pistol_img = [USP_S, P250, DUMMY, DUMMY, DUMMY, DUMMY]
+	heavy_img  = [NOVA, DUMMY, DUMMY, DUMMY, NEGEV]
+	smg_img    = [MAC10, DUMMY, DUMMY, DUMMY, DUMMY]
+	rifle_img  = [DUMMY, DUMMY, DUMMY, DUMMY, DUMMY, DUMMY]
 	nades_img  = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
 	equips_img = [KEVLAR, HELMET, ZEUS, DEFKIT]
 	# all_img    = [] LAGG IN ALLA BILDER HAR SA DET BLIR SOM EN HASHMAP
@@ -127,6 +131,8 @@ def main():
 				screen.blit(heavy_img[prim[1]-1], prim_rect)
 			elif prim[0] == 3:
 				screen.blit(smg_img[prim[1]-1], prim_rect)
+			elif prim[0] == 4:
+				screen.blit(rifle_img[prim[1]-1], prim_rect)
 
 
 
