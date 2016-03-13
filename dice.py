@@ -22,6 +22,9 @@ def roll_session():
 	while True:
 		die = roll()
 
+		if die == (5,2):
+			equipment.add((5,1))
+
 		if die[0] != 6 and (die not in [(5,4), (5,3)]):
 			equipment.add(die)
 			break

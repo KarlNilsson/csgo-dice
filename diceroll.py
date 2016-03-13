@@ -13,6 +13,11 @@ DECOY	 	= pygame.image.load(os.getcwd() + '\pictures\\nades\decoy.png')
 MOLOTOV		= pygame.image.load(os.getcwd() + '\pictures\\nades\molotov.png')
 FLASHBANG	= pygame.image.load(os.getcwd() + '\pictures\\nades\\flash.png')
 SMOKE  		= pygame.image.load(os.getcwd() + '\pictures\\nades\smoke.png')
+#EQUIPMENT
+KEVLAR 		= pygame.image.load(os.getcwd() + '\pictures\equipment\kevlar.png')
+HELMET 		= pygame.image.load(os.getcwd() + '\pictures\equipment\helmet.png')
+ZEUS 		= pygame.image.load(os.getcwd() + '\pictures\equipment\zeus.png')
+DEFKIT 		= pygame.image.load(os.getcwd() + '\pictures\equipment\defkit.png')
 
 
 
@@ -53,10 +58,10 @@ def main():
 
 	quit = False
 
-	prim_img  = None
-	sec_img   = [USP_S, P250, USP_S, P250, USP_S, P250]
-	nades_img = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
-	equip_img = []
+	prim_img   = None
+	sec_img    = [USP_S, P250, USP_S, P250, USP_S, P250]
+	nades_img  = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
+	equips_img = [KEVLAR, HELMET, ZEUS, DEFKIT]
 
 	prim  = None
 	sec   = None
@@ -86,9 +91,9 @@ def main():
 				equip = []
 				nade_count = 0
 				equip_count = 0
-				equipment = dice.roll_session()
-				print equipment
-				for item in equipment:
+				loadout = dice.roll_session()
+				print loadout
+				for item in loadout:
 					if item[0] == 1:
 						sec = item
 					elif item[0] == 5:
@@ -105,6 +110,7 @@ def main():
 		if sec is not None:
 			screen.blit(sec_img[sec[1]-1], sec_rect)
 			#print sec_img[0]
+
 		nade_index = 0
 		for nade in nades:
 			nade_img = nades_img[nade[1]-1]
@@ -114,6 +120,15 @@ def main():
 
 			screen.blit(nade_img, pygame.Rect(left, top, 65, 35))
 			nade_index += 1
+
+		equip_index = 0
+		for item in equip:
+			equip_img = equips_img[item[1]-1]
+			left = (equip_rect.left + 3) + (69 * (equip_index%2))
+			top = (equip_rect.top + 2) + (41 * (equip_index/2))
+
+			screen.blit(equip_img, pygame.Rect(left, top, 65, 35))
+			equip_index += 1
 
 
 
