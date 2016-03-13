@@ -5,24 +5,26 @@ WINDOW_HEIGHT = 300
 BACKGROUND_COLOR = (34, 177, 26)
 
 #MISC
-DIE_CT  = os.getcwd() + '\pictures\die-ct.png'
-DIE_T   = os.getcwd() + '\pictures\die-t.png'
-DUMMY   = pygame.image.load(os.getcwd() + '\pictures\dummy.png')
-""
+DIE_CT  = os.getcwd() + '\pictures\misc\die-ct.png'
+DIE_T   = os.getcwd() + '\pictures\misc\die-t.png'
+DUMMY   = pygame.image.load(os.getcwd() + '\pictures\misc\dummy.png')
 #PISTOLS
 USP_S    = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
+GLOCK    = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
 BERETTAS = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
 P250     = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
 CZ75     = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
-DEAGLE   = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
+DEAGLE   = pygame.image.load(os.getcwd() + '\pictures\pistols\deagle.png') 
 #HEAVY
-NOVA   = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
-XM1014 = pygame.image.load(os.getcwd() + '\pictures\heavy\\xm1014.png')
-MAG7   = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
-M249   = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
-NEGEV  = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
+NOVA      = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
+XM1014    = pygame.image.load(os.getcwd() + '\pictures\heavy\\xm1014.png')
+MAG7      = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
+SAWED_OFF = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
+M249      = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
+NEGEV     = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
 #SMGS
 MAC10    = pygame.image.load(os.getcwd() + '\pictures\smg\mac10.png')
+MP9      = pygame.image.load(os.getcwd() + '\pictures\smg\mp9.png')
 MP7      = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
 UMP45    = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
 P90      = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
@@ -30,9 +32,12 @@ PP_BIZON = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
 #RIFLES
 
 FAMAS = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+GALIL = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 M4A4  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+AK47  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 SCOUT = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 SG553 = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+AUG   = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 AWP   = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 AUTO  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 #GRENADES
@@ -87,13 +92,25 @@ def main():
 
 	quit = False
 
-	pistol_img = [USP_S, BERETTAS, P250, CZ75, DEAGLE]
-	heavy_img  = [NOVA, XM1014, MAG7, M249, NEGEV]
-	smg_img    = [MAC10, MP7, UMP45, P90, PP_BIZON]
-	rifle_img  = [FAMAS, M4A4, SCOUT, SG553, AWP, AUTO]
-	nades_img  = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
-	equips_img = [KEVLAR, HELMET, ZEUS, DEFKIT]
-	# all_img    = [] LAGG IN ALLA BILDER HAR SA DET BLIR SOM EN HASHMAP
+	t_pistol_img  = [GLOCK, BERETTAS, P250, CZ75, DEAGLE]
+	ct_pistol_img = [USP_S, BERETTAS, P250, CZ75, DEAGLE]
+
+	t_heavy_img   = [NOVA, XM1014, SAWED_OFF, M249, NEGEV]
+	ct_heavy_img  = [NOVA, XM1014, MAG7, M249, NEGEV]
+
+	t_smg_img     = [MAC10, MP7, UMP45, P90, PP_BIZON]
+	ct_smg_img    = [MP9, MP7, UMP45, P90, PP_BIZON]
+
+	t_rifle_img   = [GALIL, AK47, SCOUT, SG553, AWP, AUTO]
+	ct_rifle_img  = [FAMAS, M4A4, SCOUT, AUG, AWP, AUTO]
+	
+	nades_img     = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
+	equips_img    = [KEVLAR, HELMET, ZEUS, DEFKIT]
+	
+	pistol_img = ct_pistol_img
+	heavy_img  = ct_heavy_img
+	smg_img    = ct_smg_img
+	rifle_img  = ct_rifle_img
 
 	prim  = None
 	sec   = None
@@ -123,9 +140,17 @@ def main():
 					if current_die == 'ct':
 						roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DIE_T)
 						current_die = 't'
+						pistol_img = t_pistol_img
+						heavy_img  = t_heavy_img
+						smg_img    = t_smg_img
+						rifle_img  = t_rifle_img
 					else: 
 						roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DIE_CT)
 						current_die = 'ct'
+						pistol_img = ct_pistol_img
+						heavy_img  = ct_heavy_img
+						smg_img    = ct_smg_img
+						rifle_img  = ct_rifle_img
 				else:
 					prim  = None
 					sec   = None
@@ -149,7 +174,6 @@ def main():
 		#ADD PISTOL
 		if sec is not None:
 			screen.blit(pistol_img[sec[1]-1], sec_rect)
-
 		#ADD PRIMARY WEAPON
 		if prim is not None:
 			if prim[0] == 2:
@@ -158,7 +182,6 @@ def main():
 				screen.blit(smg_img[prim[1]-1], prim_rect)
 			elif prim[0] == 4:
 				screen.blit(rifle_img[prim[1]-1], prim_rect)
-
 		#ADD NADES
 		nade_index = 0
 		for nade in nades:
@@ -167,10 +190,11 @@ def main():
 			top = (nades_rect.top + 2) + (41 * (nade_index/2))
 			screen.blit(nade_img, pygame.Rect(left, top, 65, 35))
 			nade_index += 1
-
 		#ADD EQUIPMENT
 		equip_index = 0
 		for item in equip:
+			if current_die == 't' and item[1] == 4:
+				continue
 			equip_img = equips_img[item[1]-1]
 			left = (equip_rect.left + 3) + (69 * (equip_index%2))
 			top = (equip_rect.top + 2) + (41 * (equip_index/2))
@@ -178,11 +202,6 @@ def main():
 			equip_index += 1
 
 		pygame.display.flip()
-		#pygame.display.update()
-
-
-
-
 		clock.tick(60)
 
 
