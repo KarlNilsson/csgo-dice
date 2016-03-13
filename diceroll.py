@@ -7,6 +7,11 @@ BACKGROUND_COLOR = (24, 81, 186)
 #PISTOLS
 USP_S = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
 P250  = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
+#HEAVY
+NOVA  = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
+NEGEV = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
+#SMGS
+MAC10 = pygame.image.load(os.getcwd() + '\pictures\smg\mac10.png')
 #GRENADES
 HE_GRENADE  = pygame.image.load(os.getcwd() + '\pictures\\nades\he.png')
 DECOY	 	= pygame.image.load(os.getcwd() + '\pictures\\nades\decoy.png')
@@ -58,10 +63,12 @@ def main():
 
 	quit = False
 
-	prim_img   = None
-	sec_img    = [USP_S, P250, USP_S, P250, USP_S, P250]
+	pistol_img = [USP_S, P250, USP_S, P250, USP_S, P250]
+	heavy_img  = [NOVA, NEGEV, NOVA, NEGEV, NOVA, NEGEV]
+	smg_img    = [MAC10, MAC10, MAC10, MAC10, MAC10, MAC10]
 	nades_img  = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
 	equips_img = [KEVLAR, HELMET, ZEUS, DEFKIT]
+	# all_img    = [] LAGG IN ALLA BILDER HAR SA DET BLIR SOM EN HASHMAP
 
 	prim  = None
 	sec   = None
@@ -83,6 +90,8 @@ def main():
 			pygame.draw.rect(screen, (100, 100, 100), nades_frame, 2)
 			pygame.draw.rect(screen, (100, 100, 100), equip_frame, 2)
 
+			roll_button.draw(screen)
+
 
 			if 'click' in roll_button.handleEvent(event):
 				prim  = None
@@ -103,14 +112,25 @@ def main():
 					else:
 						prim = item
 
-		roll_button.draw(screen)
+		
 
 		#if prim_img is not None:
 			#screen.blit(prim_img, prim_rect)
+		
+		#ADD PISTOL
 		if sec is not None:
-			screen.blit(sec_img[sec[1]-1], sec_rect)
-			#print sec_img[0]
+			screen.blit(pistol_img[sec[1]-1], sec_rect)
 
+		#ADD PRIMARY WEAPON
+		if prim is not None:
+			if prim[0] == 2:
+				screen.blit(heavy_img[prim[1]-1], prim_rect)
+			elif prim[0] == 3:
+				screen.blit(smg_img[prim[1]-1], prim_rect)
+
+
+
+		#ADD NADES
 		nade_index = 0
 		for nade in nades:
 			nade_img = nades_img[nade[1]-1]
@@ -121,6 +141,7 @@ def main():
 			screen.blit(nade_img, pygame.Rect(left, top, 65, 35))
 			nade_index += 1
 
+		#ADD EQUIPMENT
 		equip_index = 0
 		for item in equip:
 			equip_img = equips_img[item[1]-1]
