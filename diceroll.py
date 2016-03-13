@@ -2,19 +2,39 @@ import os, sys, pygame, pygbutton, dice
 
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 300
-BACKGROUND_COLOR = (24, 81, 186)
+BACKGROUND_COLOR = (34, 177, 26)
 
 #MISC
-DICE  = os.getcwd() + '\pictures\die.png'
-DUMMY = pygame.image.load(os.getcwd() + '\pictures\dummy.png')
+DIE_CT  = os.getcwd() + '\pictures\die-ct.png'
+DIE_T   = os.getcwd() + '\pictures\die-t.png'
+DUMMY   = pygame.image.load(os.getcwd() + '\pictures\dummy.png')
+""
 #PISTOLS
-USP_S = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
-P250  = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
+USP_S    = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
+BERETTAS = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
+P250     = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
+CZ75     = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
+DEAGLE   = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
 #HEAVY
-NOVA  = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
-NEGEV = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
+NOVA   = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
+XM1014 = pygame.image.load(os.getcwd() + '\pictures\heavy\\xm1014.png')
+MAG7   = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
+M249   = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
+NEGEV  = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
 #SMGS
-MAC10 = pygame.image.load(os.getcwd() + '\pictures\smg\mac10.png')
+MAC10    = pygame.image.load(os.getcwd() + '\pictures\smg\mac10.png')
+MP7      = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
+UMP45    = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
+P90      = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
+PP_BIZON = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
+#RIFLES
+
+FAMAS = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+M4A4  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+SCOUT = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+SG553 = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+AWP   = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+AUTO  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
 #GRENADES
 HE_GRENADE  = pygame.image.load(os.getcwd() + '\pictures\\nades\he.png')
 DECOY	 	= pygame.image.load(os.getcwd() + '\pictures\\nades\decoy.png')
@@ -62,14 +82,15 @@ def main():
 	nades_frame = pygame.Rect(8, 208, 144, 84)
 	equip_frame = pygame.Rect(198, 208, 144, 84)
 
-	roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DICE)
+	roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DIE_CT)
+	current_die = 'ct'
 
 	quit = False
 
-	pistol_img = [USP_S, P250, DUMMY, DUMMY, DUMMY, DUMMY]
-	heavy_img  = [NOVA, DUMMY, DUMMY, DUMMY, NEGEV]
-	smg_img    = [MAC10, DUMMY, DUMMY, DUMMY, DUMMY]
-	rifle_img  = [DUMMY, DUMMY, DUMMY, DUMMY, DUMMY, DUMMY]
+	pistol_img = [USP_S, BERETTAS, P250, CZ75, DEAGLE]
+	heavy_img  = [NOVA, XM1014, MAG7, M249, NEGEV]
+	smg_img    = [MAC10, MP7, UMP45, P90, PP_BIZON]
+	rifle_img  = [FAMAS, M4A4, SCOUT, SG553, AWP, AUTO]
 	nades_img  = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
 	equips_img = [KEVLAR, HELMET, ZEUS, DEFKIT]
 	# all_img    = [] LAGG IN ALLA BILDER HAR SA DET BLIR SOM EN HASHMAP
@@ -80,46 +101,50 @@ def main():
 	equip = []
 
 	while not quit:
+		pygame.draw.rect(screen, (200, 200, 200), prim_rect)
+		pygame.draw.rect(screen, (200, 200, 200), sec_rect)
+		pygame.draw.rect(screen, (200, 200, 200), nades_rect)
+		pygame.draw.rect(screen, (200, 200, 200), equip_rect)
+
+		pygame.draw.rect(screen, (100, 100, 100), prim_frame, 2)
+		pygame.draw.rect(screen, (100, 100, 100), sec_frame, 2)
+		pygame.draw.rect(screen, (100, 100, 100), nades_frame, 2)
+		pygame.draw.rect(screen, (100, 100, 100), equip_frame, 2)
+
+		roll_button.draw(screen)
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				quit = True
 
-			pygame.draw.rect(screen, (200, 200, 200), prim_rect)
-			pygame.draw.rect(screen, (200, 200, 200), sec_rect)
-			pygame.draw.rect(screen, (200, 200, 200), nades_rect)
-			pygame.draw.rect(screen, (200, 200, 200), equip_rect)
-
-			pygame.draw.rect(screen, (100, 100, 100), prim_frame, 2)
-			pygame.draw.rect(screen, (100, 100, 100), sec_frame, 2)
-			pygame.draw.rect(screen, (100, 100, 100), nades_frame, 2)
-			pygame.draw.rect(screen, (100, 100, 100), equip_frame, 2)
-
-			roll_button.draw(screen)
 
 
 			if 'click' in roll_button.handleEvent(event):
-				prim  = None
-				sec   = None
-				nades = []
-				equip = []
-				nade_count = 0
-				equip_count = 0
-				loadout = dice.roll_session()
-				print loadout
-				for item in loadout:
-					if item[0] == 1:
-						sec = item
-					elif item[0] == 5:
-						equip.append(item)
-					elif item[0] == 6:
-						nades.append(item)
-					else:
-						prim = item
+				if event.button == 3:
+					if current_die == 'ct':
+						roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DIE_T)
+						current_die = 't'
+					else: 
+						roll_button = pygbutton.PygButton((WINDOW_WIDTH - 100, 0, 100, 50), normal=DIE_CT)
+						current_die = 'ct'
+				else:
+					prim  = None
+					sec   = None
+					nades = []
+					equip = []
+					nade_count = 0
+					equip_count = 0
+					loadout = dice.roll_session()
+					print loadout
+					for item in loadout:
+						if item[0] == 1:
+							sec = item
+						elif item[0] == 5:
+							equip.append(item)
+						elif item[0] == 6:
+							nades.append(item)
+						else:
+							prim = item
 
-		
-
-		#if prim_img is not None:
-			#screen.blit(prim_img, prim_rect)
 		
 		#ADD PISTOL
 		if sec is not None:
@@ -134,16 +159,12 @@ def main():
 			elif prim[0] == 4:
 				screen.blit(rifle_img[prim[1]-1], prim_rect)
 
-
-
 		#ADD NADES
 		nade_index = 0
 		for nade in nades:
 			nade_img = nades_img[nade[1]-1]
-
 			left = (nades_rect.left + 3) + (69 * (nade_index%2))
 			top = (nades_rect.top + 2) + (41 * (nade_index/2))
-
 			screen.blit(nade_img, pygame.Rect(left, top, 65, 35))
 			nade_index += 1
 
@@ -153,19 +174,11 @@ def main():
 			equip_img = equips_img[item[1]-1]
 			left = (equip_rect.left + 3) + (69 * (equip_index%2))
 			top = (equip_rect.top + 2) + (41 * (equip_index/2))
-
 			screen.blit(equip_img, pygame.Rect(left, top, 65, 35))
 			equip_index += 1
 
-
-
-			
-		#for equip in equip_img:
-			#screen.blit(equip, pos)
-
-
 		pygame.display.flip()
-		pygame.display.update()
+		#pygame.display.update()
 
 
 
