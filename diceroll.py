@@ -54,9 +54,14 @@ def main():
 	quit = False
 
 	prim_img  = None
-	sec_img   = []
-	nades_img = []
+	sec_img   = [USP_S, P250, USP_S, P250, USP_S, P250]
+	nades_img = [MOLOTOV, DECOY, FLASHBANG, HE_GRENADE, SMOKE]
 	equip_img = []
+
+	prim  = None
+	sec   = None
+	nades = []
+	equip = []
 
 	while not quit:
 		for event in pygame.event.get():
@@ -75,34 +80,44 @@ def main():
 
 
 			if 'click' in roll_button.handleEvent(event):
-				prim_img  = None
-				sec_img   = None
-				nades_img = []
-				equip_img = []
-				roll = dice.roll()
-				print roll
-
-				if roll[0] in [2, 3, 4]:
-					prim_img = roll[1]
-				elif roll[0] == 1:
-					sec_img = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
-
-				elif roll[0] == 6:
-					nades_img.append(roll[1])
-				elif roll[0] == 5:
-					equip_img.append(roll[1])
-				
-
-
+				prim  = None
+				sec   = None
+				nades = []
+				equip = []
+				nade_count = 0
+				equip_count = 0
+				equipment = dice.roll_session()
+				print equipment
+				for item in equipment:
+					if item[0] == 1:
+						sec = item
+					elif item[0] == 5:
+						equip.append(item)
+					elif item[0] == 6:
+						nades.append(item)
+					else:
+						prim = item
 
 		roll_button.draw(screen)
 
 		#if prim_img is not None:
 			#screen.blit(prim_img, prim_rect)
-		if sec_img is not None:
-			screen.blit(sec_img, sec_rect)
-		#for nade in nades_img:
-			#screen.blit(nade, pos)
+		if sec is not None:
+			screen.blit(sec_img[sec[1]-1], sec_rect)
+			#print sec_img[0]
+		nade_index = 0
+		for nade in nades:
+			nade_img = nades_img[nade[1]-1]
+
+			left = (nades_rect.left + 3) + (69 * (nade_index%2))
+			top = (nades_rect.top + 2) + (41 * (nade_index/2))
+
+			screen.blit(nade_img, pygame.Rect(left, top, 65, 35))
+			nade_index += 1
+
+
+
+			
 		#for equip in equip_img:
 			#screen.blit(equip, pos)
 
