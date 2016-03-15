@@ -10,7 +10,7 @@ DIE_T   = os.getcwd() + '\pictures\misc\die-t.png'
 DUMMY   = pygame.image.load(os.getcwd() + '\pictures\misc\dummy.png')
 #PISTOLS
 USP_S    = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
-GLOCK    = pygame.image.load(os.getcwd() + '\pictures\pistols\dummy.png') 
+GLOCK    = pygame.image.load(os.getcwd() + '\pictures\pistols\glock.png') 
 BERETTAS = pygame.image.load(os.getcwd() + '\pictures\pistols\dual_berettas.png') 
 P250     = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
 CZ75     = pygame.image.load(os.getcwd() + '\pictures\pistols\cz75.png') 
@@ -28,7 +28,7 @@ MP9      = pygame.image.load(os.getcwd() + '\pictures\smg\mp9.png')
 MP7      = pygame.image.load(os.getcwd() + '\pictures\smg\mp7.png')
 UMP45    = pygame.image.load(os.getcwd() + '\pictures\smg\ump45.png')
 P90      = pygame.image.load(os.getcwd() + '\pictures\smg\p90.png')
-PP_BIZON = pygame.image.load(os.getcwd() + '\pictures\smg\dummy.png')
+PP_BIZON = pygame.image.load(os.getcwd() + '\pictures\smg\pepebizon.png')
 #RIFLES
 
 FAMAS = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
