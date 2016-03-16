@@ -33,7 +33,7 @@ PP_BIZON = pygame.image.load(os.getcwd() + '/pictures/smg/pepebizon.png')
 
 FAMAS = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
 GALIL = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
-M4A4  = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+M4A4  = pygame.image.load(os.getcwd() + '/pictures/rifles/m4a4.png')
 AK47  = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
 SCOUT = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
 SG553 = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
