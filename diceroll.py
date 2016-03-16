@@ -5,52 +5,52 @@ WINDOW_HEIGHT = 300
 BACKGROUND_COLOR = (34, 177, 26)
 
 #MISC
-DIE_CT  = os.getcwd() + '\pictures\misc\die-ct.png'
-DIE_T   = os.getcwd() + '\pictures\misc\die-t.png'
-DUMMY   = pygame.image.load(os.getcwd() + '\pictures\misc\dummy.png')
+DIE_CT  = os.getcwd() + '/pictures/misc/die-ct.png'
+DIE_T   = os.getcwd() + '/pictures/misc/die-t.png'
+DUMMY   = pygame.image.load(os.getcwd() + '/pictures/misc/dummy.png')
 #PISTOLS
-USP_S    = pygame.image.load(os.getcwd() + '\pictures\pistols\usp-s.png')
-GLOCK    = pygame.image.load(os.getcwd() + '\pictures\pistols\glock.png') 
-BERETTAS = pygame.image.load(os.getcwd() + '\pictures\pistols\dual_berettas.png') 
-P250     = pygame.image.load(os.getcwd() + '\pictures\pistols\p250.png')
-CZ75     = pygame.image.load(os.getcwd() + '\pictures\pistols\cz75.png') 
-DEAGLE   = pygame.image.load(os.getcwd() + '\pictures\pistols\deagle.png') 
+USP_S    = pygame.image.load(os.getcwd() + '/pictures/pistols/usp-s.png')
+GLOCK    = pygame.image.load(os.getcwd() + '/pictures/pistols/glock.png') 
+BERETTAS = pygame.image.load(os.getcwd() + '/pictures/pistols/dual_berettas.png') 
+P250     = pygame.image.load(os.getcwd() + '/pictures/pistols/p250.png')
+CZ75     = pygame.image.load(os.getcwd() + '/pictures/pistols/cz75.png') 
+DEAGLE   = pygame.image.load(os.getcwd() + '/pictures/pistols/deagle.png') 
 #HEAVY
-NOVA      = pygame.image.load(os.getcwd() + '\pictures\heavy\\fruktsallad.png')
-XM1014    = pygame.image.load(os.getcwd() + '\pictures\heavy\\xm1014.png')
-MAG7      = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
-SAWED_OFF = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
-M249      = pygame.image.load(os.getcwd() + '\pictures\heavy\dummy.png')
-NEGEV     = pygame.image.load(os.getcwd() + '\pictures\heavy\\negev.png')
+NOVA      = pygame.image.load(os.getcwd() + '/pictures/heavy/fruktsallad.png')
+XM1014    = pygame.image.load(os.getcwd() + '/pictures/heavy/xm1014.png')
+MAG7      = pygame.image.load(os.getcwd() + '/pictures/heavy/dummy.png')
+SAWED_OFF = pygame.image.load(os.getcwd() + '/pictures/heavy/dummy.png')
+M249      = pygame.image.load(os.getcwd() + '/pictures/heavy/dummy.png')
+NEGEV     = pygame.image.load(os.getcwd() + '/pictures/heavy/negev.png')
 #SMGS
-MAC10    = pygame.image.load(os.getcwd() + '\pictures\smg\mac10.png')
-MP9      = pygame.image.load(os.getcwd() + '\pictures\smg\mp9.png')
-MP7      = pygame.image.load(os.getcwd() + '\pictures\smg\mp7.png')
-UMP45    = pygame.image.load(os.getcwd() + '\pictures\smg\ump45.png')
-P90      = pygame.image.load(os.getcwd() + '\pictures\smg\p90.png')
-PP_BIZON = pygame.image.load(os.getcwd() + '\pictures\smg\pepebizon.png')
+MAC10    = pygame.image.load(os.getcwd() + '/pictures/smg/mac10.png')
+MP9      = pygame.image.load(os.getcwd() + '/pictures/smg/mp9.png')
+MP7      = pygame.image.load(os.getcwd() + '/pictures/smg/mp7.png')
+UMP45    = pygame.image.load(os.getcwd() + '/pictures/smg/ump45.png')
+P90      = pygame.image.load(os.getcwd() + '/pictures/smg/p90.png')
+PP_BIZON = pygame.image.load(os.getcwd() + '/pictures/smg/pepebizon.png')
 #RIFLES
 
-FAMAS = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-GALIL = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-M4A4  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-AK47  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-SCOUT = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-SG553 = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-AUG   = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-AWP   = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
-AUTO  = pygame.image.load(os.getcwd() + '\pictures\\rifles/dummy.png')
+FAMAS = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+GALIL = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+M4A4  = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+AK47  = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+SCOUT = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+SG553 = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+AUG   = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+AWP   = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
+AUTO  = pygame.image.load(os.getcwd() + '/pictures/rifles/dummy.png')
 #GRENADES
-HE_GRENADE  = pygame.image.load(os.getcwd() + '\pictures\\nades\he.png')
-DECOY	 	= pygame.image.load(os.getcwd() + '\pictures\\nades\decoy.png')
-MOLOTOV		= pygame.image.load(os.getcwd() + '\pictures\\nades\molotov.png')
-FLASHBANG	= pygame.image.load(os.getcwd() + '\pictures\\nades\\flash.png')
-SMOKE  		= pygame.image.load(os.getcwd() + '\pictures\\nades\smoke.png')
+HE_GRENADE  = pygame.image.load(os.getcwd() + '/pictures/nades/he.png')
+DECOY	 	= pygame.image.load(os.getcwd() + '/pictures/nades/decoy.png')
+MOLOTOV		= pygame.image.load(os.getcwd() + '/pictures/nades/molotov.png')
+FLASHBANG	= pygame.image.load(os.getcwd() + '/pictures/nades/flash.png')
+SMOKE  		= pygame.image.load(os.getcwd() + '/pictures/nades/smoke.png')
 #EQUIPMENT
-KEVLAR 		= pygame.image.load(os.getcwd() + '\pictures\equipment\kevlar.png')
-HELMET 		= pygame.image.load(os.getcwd() + '\pictures\equipment\helmet.png')
-ZEUS 		= pygame.image.load(os.getcwd() + '\pictures\equipment\zeus.png')
-DEFKIT 		= pygame.image.load(os.getcwd() + '\pictures\equipment\defkit.png')
+KEVLAR 		= pygame.image.load(os.getcwd() + '/pictures/equipment/kevlar.png')
+HELMET 		= pygame.image.load(os.getcwd() + '/pictures/equipment/helmet.png')
+ZEUS 		= pygame.image.load(os.getcwd() + '/pictures/equipment/zeus.png')
+DEFKIT 		= pygame.image.load(os.getcwd() + '/pictures/equipment/defkit.png')
 
 
 
@@ -64,7 +64,7 @@ def main():
 
 	font1 = pygame.font.Font(None, 30)
 	font2 = pygame.font.Font(None, 25)
-	h1 = font1.render("Next round\'s loadout: ",	1, (0, 0, 0))
+	h1 = font1.render("Next round/'s loadout: ",	1, (0, 0, 0))
 
 	prim_text  = font2.render("Primary weapon",	1, (20, 10, 10))
 	sec_text   = font2.render("Secondary weapon",	1, (20, 10, 10))
